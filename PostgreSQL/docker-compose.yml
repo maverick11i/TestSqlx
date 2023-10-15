@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  sqlx_postgres:
+    image: postgres:16
+    container_name: sqlx_postgres
+    environment:
+      POSTGRES_USER: sqlx
+      POSTGRES_PASSWORD: sqlx87189
+      POSTGRES_DB: sqlx
+    ports:
+      - "5432:5432"
+    volumes:
+      - volume_postgres:/var/lib/postgresql/data
+      - ./sqlx_postgres/initdb.d:/docker-entrypoint-initdb.d
+
+volumes:
+  volume_postgres:
+    name: vpg
